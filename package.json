@@ -1,6 +1,7 @@
 {
-  "name": "deno_code_hunter",
+  "name": "deno-code-hunter",
   "version": "0.1.0",
+  "author": "Deno",
   "private": true,
   "scripts": {
     "dev": "next dev",
