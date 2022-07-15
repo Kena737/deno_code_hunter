@@ -102,12 +102,12 @@
   margin-left: 0.5rem;
 }
 
-.navbar ul{
+.navbar ul {
   display: flex;
   justify-content: center;
 }
 
-.navbar ul li{
+.navbar ul li {
   margin-right: 5px;
   margin-left: 5px;
   list-style: none;
@@ -117,13 +117,15 @@
   padding-right: 20px;
   padding-left: 20px;
   border-radius: 5px;
+  display: inline-block;
 }
 
-.navbar ul li:hover{
+.navbar ul li:hover {
   background: #e7e6e6;
+  color: #0070f3;
 }
 
-.rounded_lg{
+.rounded_lg {
   border-radius: 5px;
 }
 
