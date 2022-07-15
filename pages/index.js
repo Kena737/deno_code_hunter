@@ -1,69 +1,103 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Deno Code Hunter -Hunt for a code, bug </title>
+        <title>Deno Code Hunter - Hunt for a code, bug </title>
         <meta name="description" content="Welcome to Deno Hunting code hunt for a bug, sample code, awosome usefull javascript funtions" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="#avicon.ico" />
       </Head>
+      
+      <nav className={styles.navbar}>
+        <ul>
+          <Link href="/"><a><li>Home</li></a></Link>
+          <Link href="/blog"><a><li>Blogs</li></a></Link>
+          <Link href="/about"><a><li>About</li></a></Link>
+          <Link href="/contact"><a><li>Contact</li></a></Link>
+        </ul>
+      </nav>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="/">Deno Hunting</a> Code
+          <a href="/">Deno</a> Hunting Code
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3Rr8bUW"} loading='lazy' width={300} height={220} objectFit={'cover'} />
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3yH5GFo"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cgofcc"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3cceOdE"} loading='lazy' width={300} height={220} objectFit={'cover'} />
+            <h2>Documentation &rarr;</h2>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
+
+          <a href="/" className={styles.card}>
+            <Image className={styles.rounded_lg} src={"https://bit.ly/3PrlFON"} loading='lazy' width={300} height={220} objectFit={'cover'} />
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
           </a>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      {/* <footer className={styles.footer}>
+        <Link>
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image className={styles.rounded_lg} src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
-        </a>
-      </footer>
+        </Link>
+      </footer> */}
     </div>
   )
 }
