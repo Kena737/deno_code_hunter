@@ -1,10 +1,14 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// localhost:3000/api/blogs
-import * as fs  from 'fs'
+import * as fs from 'fs';
 
-export default function handler(req, res) {
-    fs.readdir('blogData', (err, data) => {
-        console.log(data);
-    res.status(200).json(data)
-  })
+export default async function handler(req, res) {
+    let data = await fs.promises.readdir(`blogdata`);
+    let myfile;
+    let allblogs = [];
+    for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        console.log(item);
+        myfile = await fs.promises.readFile(`blogdata/${item}`, "utf-8");
+        allblogs.push(JSON.parse(myfile));
+    }
+    res.status(200).json(allblogs);
 }

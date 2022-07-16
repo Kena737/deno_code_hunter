@@ -1,10 +1,22 @@
 .container {
-    padding: 0 2rem;
-  }
-  
-  .main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  padding: 0 20rem;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rounded_lg {
+  border-radius: 5px;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.text_left {
+  text-align: left;
+}
