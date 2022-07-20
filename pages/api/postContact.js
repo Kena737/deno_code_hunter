@@ -5,9 +5,9 @@ import * as fs from 'fs';
 export default async function  handler(req, res) {
     if (req.method === 'POST') {
         // Process a Post request
-        console.log(req.body);
+        // console.log(req.body);
         let data = await fs.promises.readdir('contactdata');
-        console.log(data)
+        // console.log(data)
         let file = 'contactdata/contact-' + data.length + '.json';
         await fs.promises.writeFile(file, JSON.stringify(req.body));
         res.send('POST request received');
