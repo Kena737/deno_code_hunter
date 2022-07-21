@@ -28,7 +28,7 @@ const contact = () => {
         console.log("Success: " + data );
         alert("Message sent successfully");
         setEmail("");
-        setName("Tanks");
+        setName("");
         setPhone("");
         setMessage("");
       })

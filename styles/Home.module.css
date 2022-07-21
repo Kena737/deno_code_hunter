@@ -9,10 +9,6 @@
   align-items: center;
 }
 
-.h2{
-  color: #fafafa;
-}
-
 .footer {
   display: flex;
   flex: 1;
@@ -44,7 +40,6 @@
   margin: 25px 0 25px 0;
   line-height: 1.15;
   font-size: 4rem;
-  color: white;
 }
 
 .title,

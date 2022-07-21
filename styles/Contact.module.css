@@ -2,6 +2,12 @@
     padding: 0 20rem;
   }
   
+  @media only screen and (max-Width: 880px)  {
+    .input_box {
+      width: 100%;
+    }
+  }
+
   .main {
     min-height: 100vh;
     display: flex;
