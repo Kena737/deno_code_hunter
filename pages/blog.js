@@ -1,39 +1,46 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import Image from "next/image";
+import Blog from "../models/Blog"
+import styles from "../styles/Home.module.css";
+import mongoose from "mongoose";
+import React, { useEffect, useState } from "react";
 
 // use the fetch use in useEffect
-const blog = (props) => {
-  console.log(props);
-  const [blogs, setBlogs] = useState(props.allBlogs);
+const blog = ({Dblog}) => {
+  console.log(Dblog);
   return (
     <>
       <main className={styles.main}>
       <h1>Latest post &rarr;</h1>
         <div className={styles.grid}>
-          {blogs.map((blogitem) => {
-            return <Link href={`/blogpost/${blogitem.slug}`} key={blogitem.slug}>
+          {Object.keys(Dblog).map((blogitem) => {
+            return <Link href={`/blogpost/${blogitem.slug}`} key={Dblog[blogitem].slug}>
                   <a className={styles.card}>
-                    <Image className={styles.rounded_lg} src={blogitem.image} loading="lazy" width={300} height={230} objectFit={"cover"}/>
-                    <h2>{blogitem.title} &rarr;</h2>
-                    <p>{blogitem.description.substr(0,58)}..</p>
+                    <Image className={styles.rounded_lg} alt="Hello" src={Dblog[blogitem].image} loading="lazy" width={300} height={230} objectFit={"cover"}/>
+                    <h2>{Dblog[blogitem].title} &rarr;</h2>
+                    <p>{Dblog[blogitem].description}..</p>
                   </a>
                 </Link>
           })}
           </div>
       </main>
-
     </>
     );
     
   }
   export async function getServerSideProps(context) {
-    const data = await fetch("http://localhost:3000/api/blogs");
-    const allBlogs = await data.json();
-    return { 
-      props: {allBlogs}, // will be passed to the page component as props
-    };
+    if (!mongoose.connection.readyState) {
+      await mongoose.connect(process.env.MONDO_URI)
+    }
+    const Dblog = await Blog.find()
+
+    // return props with blog
+    return {
+      props: {
+        Dblog: JSON.parse(JSON.stringify(Dblog))
+    }
   }
+}
+
   export default blog;
 

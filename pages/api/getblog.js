@@ -1,11 +1,16 @@
-import * as fs from "fs";
+import Blog from '../../models/Blog';
+import connectDb from '../../middleware/mongoose';
 
-export default function handler(req, res) {
-  fs.readFile(`blogdata/${req.query.slug}.json`, "utf-8", (err, data) => {
-    if (err) {
-      res.status(500).json({ error: "No such blog found" });
-    }
-    // console.log(req.query.slug);
-    res.status(200).json(JSON.parse(data));
-  });
+const handler = async (req, res)=>{
+    const blog = await Blog.find();
+    res.status(200).json({
+        status: 'success',
+        data: {
+            blog
+        }
+    });
+
 }
+
+export default connectDb(handler);
+  
