@@ -14,11 +14,11 @@ const blog = ({Dblog}) => {
       <h1>Latest post &rarr;</h1>
         <div className={styles.grid}>
           {Object.keys(Dblog).map((blogitem) => {
-            return <Link href={`/blogpost/${blogitem.slug}`} key={Dblog[blogitem].slug}>
+            return <Link href={`/blogpost/${Dblog[blogitem].slug}`} key={Dblog[blogitem].slug}>
                   <a className={styles.card}>
                     <Image className={styles.rounded_lg} alt="Hello" src={Dblog[blogitem].image} loading="lazy" width={300} height={230} objectFit={"cover"}/>
                     <h2>{Dblog[blogitem].title} &rarr;</h2>
-                    <p>{Dblog[blogitem].description}..</p>
+                    <p>{Dblog[blogitem].description.slice("0", "80")}..</p>
                   </a>
                 </Link>
           })}
