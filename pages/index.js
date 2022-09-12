@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Blog from "../models/Blog"
+import mongoose from 'mongoose'
 import styles from '../styles/Home.module.css'
 
 export default function Home({ Dblog }) {
