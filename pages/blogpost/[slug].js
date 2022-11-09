@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 import styles from '../../styles/Blogpost.module.css'
 
-const slug = (props) => {
+const Slug = (props) => {
   const [blog, setBlog] = useState(props.Blog);
   // const router = useRouter()
   // useEffect(() => {
@@ -41,4 +41,4 @@ export async function getServerSideProps(context) {
 }
 
 
-export default slug
+export default Slug
