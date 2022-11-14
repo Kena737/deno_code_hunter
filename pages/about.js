@@ -11,7 +11,7 @@ const about = () => {
       <button className={styles.btn}>Contact now</button>
       </div>
       <div className={styles.Image}>
-        <Image className={styles.rounded_lg} src={"https://bit.ly/3z6qRSM"} height={500} width={500} objectFit={"cover"}/>
+        <Image className={styles.rounded_lg} src={"https://bit.ly/3z6qRSM"} alt="image" height={500} width={500} objectFit={"cover"}/>
       </div>
 
     </div>
