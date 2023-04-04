@@ -1,51 +1,50 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
-import Blog from "../models/Blog"
-import mongoose from 'mongoose'
-import styles from '../styles/Home.module.css'
+import groq from 'groq'
+import client from '../client'
+import Image from "next/image"
+import styles from "../styles/Home.module.css";
+import imageUrlBuilder from '@sanity/image-url'
 
-export default function Home({ Dblog }) {
+const builder = imageUrlBuilder(client)
+
+function urlFor(source) {
+  return builder.image(source)
+}
+
+const Index = ({ posts }) => {
+  console.log("Hello" + posts)
   return (
     <>
-
-      <div className={styles.container}>
-        <Head>
-          <title>Deno Code Hunter - Hunt for a code, bug </title>
-          <meta name="description" content="Welcome to Deno Hunting code hunt for a bug, sample code, awosome usefull javascript funtions" />
-          <link rel="icon" href="#avicon.ico" />
-        </Head>
-
-        <main className={styles.main}>
-          <h1>Latest post &rarr;</h1>
-          <div className={styles.grid}>
-            {Object.keys(Dblog).map((blogitem) => {
-              return <Link href={`/blogpost/${Dblog[blogitem].slug}`} key={Dblog[blogitem].slug}>
-                <a className={styles.card}>
-                  <Image className={styles.rounded_lg} alt="Hello" src={Dblog[blogitem].image} loading="lazy" width={300} height={230} objectFit={"cover"} />
-                  <h2>{Dblog[blogitem].title} &rarr;</h2>
-                  <p>{Dblog[blogitem].description.slice("0", "80")}..</p>
-                </a>
+      <main className={styles.main}>
+        <h1>Latest post &rarr;</h1>
+        <div className={styles.grid}>
+          {posts.length > 0 &&
+            posts.map(({ _id, title, slug, publishedAt, mainImage, body }) => slug && (
+              <Link href={`/post/${encodeURIComponent(slug.current)}`} key={_id}>
+                <div className={styles.card}>
+                  <Image className={styles.rounded_lg} alt="Hello" src={urlFor(mainImage).width(300).height(230).url()} loading="lazy" width={300} height={230} objectFit={"cover"} />
+                  <h2>{title.slice(0, 35)} &rarr;</h2>
+                  {/* <p>{body}</p> */}
+                </div>
               </Link>
-            })}
-          </div>
-        </main>
-      </div>
+            )
+            )}
+        </div>
+      </main>
+
     </>
   )
-
 }
-export async function getServerSideProps(context) {
-  if (!mongoose.connection.readyState) {
-    await mongoose.connect(process.env.MONDO_URI)
-  }
-  const Dblog = await Blog.find()
 
-  // return props with blog
+export async function getStaticProps() {
+  const query = groq`*[_type == "post" && defined(slug.current)]{ _id, title, slug, mainImage, body }`;
+  const posts = await client.fetch(query);
   return {
     props: {
-      Dblog: JSON.parse(JSON.stringify(Dblog))
+      posts
     }
   }
 }
+
+export default Index
 
