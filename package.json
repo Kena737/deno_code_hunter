@@ -7,13 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "both": "concurrently \"next start\"  \" cd deno-code-hunter && sanity start\""
   },
   "dependencies": {
     "@sanity/client": "^5.4.1",
     "@sanity/image-url": "^1.0.2",
+    "concurrently": "^8.0.1",
     "groq": "^3.8.2",
-    "mongoose": "^6.5.3",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"
